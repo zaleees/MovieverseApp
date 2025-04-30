@@ -4,31 +4,50 @@
 //
 //  Created by M Riza Levandy on 29/04/25.
 //
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showModal = false
+    @State private var searchText = ""
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, worldd!")
+            // Bar atas dengan tulisan "Movieverse" dan tombol "+"
+            HStack {
+                Text("Movieverse")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.leading)
+
+                Spacer()
+
+                Button(action: {
+                    showModal.toggle()
+                }) {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.blue)
+                }
+                .padding(.trailing)
+            }
+            .padding()
+
+            Spacer()
         }
-        .padding()
-        
-        HStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, Hasnaaaaaa 👀")
-            Text("YAAAAAAAAA")
+        .sheet(isPresented: $showModal) {
+            VStack {
+                TextField("Search", text: $searchText)
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+            }
+            .padding()
         }
-        .padding()
     }
-    
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

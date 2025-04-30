@@ -16,7 +16,16 @@ struct ContentView: View {
             Text("Hello, worldd!")
         }
         .padding()
+        
+        HStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Hello, worldd!ddd")
+        }
+        .padding()
     }
+    
 }
 
 #Preview {
